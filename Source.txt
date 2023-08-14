@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+extern "C" __declspec(dllexport) int Posled(int *N, int n) {
+    bool rising = true;
+    for (int i = 0; i < n - 1; ++i) {
+        if (N[i] > N[i + 1])
+        {
+            rising = false;
+            break;
+        }
+    }
+        if (rising == true)
+            cout << "возрастающая";
+        else
+            cout << "не возрастающая";
+    return 0;
+}

@@ -1,0 +1,27 @@
+#include <iostream>
+#include "MathLib.h"
+using namespace std;
+
+int main() {
+    setlocale(0, "rus");
+    int i, n;
+    cout << "Введите количество элементов последовательности n" << endl;
+    cin >> n;
+    if (int(n) - n != 0) {
+        cout << "Вы ввели неверное число, попробуйте еще раз" << endl;
+    }
+    else {
+        int* N = new int[n];
+        for (i = 0; i < n; i++) {
+            cout << "Введите элемент последовательности" << endl;
+            cin >> N[i];
+            if (int(N[i]) - N[i] != 0) {
+                cout << "Неверно введено число, попробуйте целое" << endl;
+                break;
+            }
+        }
+        posled(n, N);
+        delete[] N;
+        return 0;
+    }
+}

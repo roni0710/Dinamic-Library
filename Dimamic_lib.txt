@@ -1,0 +1,23 @@
+#include <iostream>
+#include <Windows.h>
+using namespace std;
+
+int main() {
+	HINSTANCE load = LoadLibrary(L"DinamicLib.dll");
+	if (load) {
+		typedef int (*posled)(int, int);
+		posled Posled;
+		Posled = (posled)GetProcAddress(load, "Posled");
+		int n, * N;
+		cin >> n;
+		N = new int[n];
+		for (int i = 0; i < n; ++i) 
+			cin >> N[i];
+		cout << Posled(*N, n);
+		FreeLibrary(load);
+		delete[] N;
+	}
+	else
+		cout << "Fail";
+return 1;
+}
